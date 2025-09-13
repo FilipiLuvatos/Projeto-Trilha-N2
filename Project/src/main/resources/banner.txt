@@ -1,0 +1,7 @@
+${AnsiColor.CYAN}
+TTTTT  RRRRR   III  L      H   H   AAAAA       N   N  22222
+  T    R   R    I   L      H   H   A   A       NN  N      2
+  T    RRRRR    I   L      HHHHH   AAAAA       N N N   2222
+  T    R  R     I   L      H   H   A   A       N  NN  2
+  T    R   R   III  LLLLL  H   H   A   A       N   N  22222
+ ----------- PROJECT - Trilha N2  -----------

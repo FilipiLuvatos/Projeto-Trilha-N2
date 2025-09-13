@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        acks: all
+        enable.idempotence: true
+        linger.ms: 10
+        compression.type: snappy
+
+app:
+  kafka:
+    topic: config.events
+
+  security:
+    user: admin
+    password: admin123
