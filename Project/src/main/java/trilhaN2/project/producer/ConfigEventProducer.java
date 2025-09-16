@@ -1,4 +1,4 @@
-package trilhhaN2.project.producer;
+package trilhaN2.project.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import trilhhaN2.project.model.ConfigEvent;
+import trilhaN2.project.model.ConfigEvent;
 
 @Component
 public class ConfigEventProducer {

@@ -1,4 +1,4 @@
-package trilhhaN2.project;
+package trilhaN2.project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

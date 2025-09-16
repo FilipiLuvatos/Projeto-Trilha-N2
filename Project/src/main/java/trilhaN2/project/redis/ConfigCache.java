@@ -1,4 +1,4 @@
-package trilhhaN2.project.redis;
+package trilhaN2.project.redis;
 
 
 import redis.clients.jedis.JedisPooled;

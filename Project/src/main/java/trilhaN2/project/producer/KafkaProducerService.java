@@ -1,11 +1,11 @@
-package trilhhaN2.project.producer;
+package trilhaN2.project.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import trilhhaN2.project.model.ConfigEvent;
-import trilhhaN2.project.util.Json;
+import trilhaN2.project.model.ConfigEvent;
+import trilhaN2.project.util.Json;
 
 import java.time.Instant;
 import java.util.Properties;

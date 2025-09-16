@@ -1,4 +1,4 @@
-package trilhhaN2.project.consumer;
+package trilhaN2.project.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -6,9 +6,9 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import trilhhaN2.project.model.ConfigEvent;
-import trilhhaN2.project.redis.ConfigCache;
-import trilhhaN2.project.util.Json;
+import trilhaN2.project.model.ConfigEvent;
+import trilhaN2.project.redis.ConfigCache;
+import trilhaN2.project.util.Json;
 
 import java.time.Duration;
 import java.util.Collections;

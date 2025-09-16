@@ -20,3 +20,13 @@ app:
   security:
     user: admin
     password: admin123
+  datasource:
+    url: jdbc:postgresql://localhost:5432/configdb
+    username: configuser
+    password: configpass
+
+  jpa:
+    hibernate:
+      ddl-auto: validate     # valida o schema criado no pgAdmin (não cria/alterar)
+    properties:
+      hibernate.format_sql: true

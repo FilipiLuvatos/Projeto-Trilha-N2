@@ -1,4 +1,4 @@
-package trilhhaN2.project.config;
+package trilhaN2.project.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package trilhhaN2.project.model;
+package trilhaN2.project.model;
 
 import jakarta.validation.constraints.NotBlank;
 
