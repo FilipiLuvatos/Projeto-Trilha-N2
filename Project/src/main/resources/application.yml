@@ -7,26 +7,21 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      properties:
-        acks: all
-        enable.idempotence: true
-        linger.ms: 10
-        compression.type: snappy
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Trilha_N2   # ajuste a porta se usou 5433
+    username: postgres
+    password: dev92
+
+  jpa:
+    hibernate:
+      ddl-auto: validate        # você já criou as tabelas; só valide
+    properties:
+      hibernate.format_sql: true
 
 app:
   kafka:
     topic: config.events
-
   security:
     user: admin
     password: admin123
-  datasource:
-    url: jdbc:postgresql://localhost:5432/configdb
-    username: configuser
-    password: configpass
-
-  jpa:
-    hibernate:
-      ddl-auto: validate     # valida o schema criado no pgAdmin (não cria/alterar)
-    properties:
-      hibernate.format_sql: true
