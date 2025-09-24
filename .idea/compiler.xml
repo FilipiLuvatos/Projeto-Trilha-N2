@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="project" />
+        <module name="config-sdk" />
+        <module name="demo-app" />
         <module name="produtor" />
         <module name="consumidor" />
       </profile>

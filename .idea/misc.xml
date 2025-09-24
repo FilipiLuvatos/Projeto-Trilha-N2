@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/Project/pom.xml" />
         <option value="$PROJECT_DIR$/Consumer/pom.xml" />
         <option value="$PROJECT_DIR$/Producer/pom.xml" />
+        <option value="$PROJECT_DIR$/config-sdk/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-app/pom.xml" />
       </list>
     </option>
   </component>
