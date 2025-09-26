@@ -2,18 +2,21 @@ package trilhaN2.project.controller;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import trilhaN2.project.model.ConfigHistory;
 import trilhaN2.project.model.UpsertRequest;
 import trilhaN2.project.service.ConfigDomainService;
 import trilhaN2.project.service.ConfigQueryService;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/configs")
 public class ConfigController {
 
-    private final ConfigDomainService configService;  // <-- service de negócio
-    private final ConfigQueryService queryService;    // <-- leitura no Redis (GET)
+    private final ConfigDomainService configService;   // negócio (DB + eventos)
+    private final ConfigQueryService queryService;     // leitura rápida (Redis)
 
     public ConfigController(ConfigDomainService configService,
                             ConfigQueryService queryService) {
@@ -42,7 +45,7 @@ public class ConfigController {
         return ResponseEntity.accepted().build();
     }
 
-    // GET por key (lendo do Redis)
+    // GET por key (via Redis para ser rápido)
     @GetMapping("/{namespace}/{env}/{key}")
     public ResponseEntity<String> getConfig(@PathVariable String namespace,
                                             @PathVariable String env,
@@ -50,4 +53,21 @@ public class ConfigController {
         String value = queryService.getValue(namespace, env, key);
         return (value == null) ? ResponseEntity.notFound().build() : ResponseEntity.ok(value);
     }
+//
+//    // LISTA por namespace+env (usa DB via DomainService)
+//    @GetMapping("/{namespace}/{env}")
+//    public ResponseEntity<Map<String, String>> list(@PathVariable String namespace,
+//                                                    @PathVariable String env) {
+//        return ResponseEntity.ok(configService.listAsMap(namespace, env));
+//    }
+//
+//    // HISTÓRICO (últimos N; default 10) — usa DB
+//    @GetMapping("/{namespace}/{env}/{key}/history")
+//    public ResponseEntity<List<ConfigHistory>> history(@PathVariable String namespace,
+//                                                       @PathVariable String env,
+//                                                       @PathVariable String key,
+//                                                       @RequestParam(defaultValue = "10") int limit) {
+//        int safe = Math.max(1, Math.min(limit, 100));
+//        return ResponseEntity.ok(configService.history(namespace, env, key, safe));
+//    }
 }

@@ -1,0 +1,53 @@
+### ——— Variáveis (use com o ambiente "local" ou "docker" abaixo) ———
+# @name health_api
+GET {{apiBaseUrl}}/configs/{{ns}}/{{env}}/{{key}}
+Authorization: Basic {{basicAuth}}
+
+### 1) UPSERT v1 — cria/atualiza a chave
+# @name upsert_v1
+POST {{apiBaseUrl}}/configs
+Authorization: Basic {{basicAuth}}
+Content-Type: application/json
+
+{
+  "namespace": "{{ns}}",
+  "env": "{{env}}",
+  "key": "{{key}}",
+  "value": "Olá v1!",
+  "by": "admin"
+}
+
+### 2) demo: leitura direta (fallback HTTP + cache local)
+# @name demo_direct_v1
+GET {{demoBaseUrl}}/demo/direct
+
+### 3) demo: leitura via @ConfigValue (auto-atualiza por Kafka)
+# @name demo_message_v1
+GET {{demoBaseUrl}}/demo/message
+
+### 4) UPSERT v2 — deve refletir no /demo/message sem restart (auto-refresh)
+# @name upsert_v2
+POST {{apiBaseUrl}}/configs
+Authorization: Basic {{basicAuth}}
+Content-Type: application/json
+
+{
+  "namespace": "{{ns}}",
+  "env": "{{env}}",
+  "key": "{{key}}",
+  "value": "Olá v2!",
+  "by": "admin"
+}
+
+### 5) demo: checar atualização ao vivo
+# @name demo_message_v2
+GET {{demoBaseUrl}}/demo/message
+
+### 6) DELETE — remove a chave
+# @name delete_key
+DELETE {{apiBaseUrl}}/configs/{{ns}}/{{env}}/{{key}}?by=admin
+Authorization: Basic {{basicAuth}}
+
+### 7) demo: após delete deve voltar "(sem valor)"
+# @name demo_message_after_delete
+GET {{demoBaseUrl}}/demo/message

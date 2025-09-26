@@ -23,18 +23,32 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+        http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // libere o que quiser aqui (ex.: actuator)
-                        // .requestMatchers("/actuator/**").permitAll()
+                        // 🔓 Swagger / OpenAPI
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/**"
+                        ).permitAll()
+
+                        // (opcional) 🔓 Actuator
+                        // .requestMatchers("/actuator/health/**").permitAll()
+                        // .requestMatchers("/actuator/prometheus").permitAll()
+
+                        // 🔒 Demais endpoints exigem Basic Auth
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
+
         return http.build();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {

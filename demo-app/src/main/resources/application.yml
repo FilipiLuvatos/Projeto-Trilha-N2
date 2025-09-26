@@ -10,3 +10,12 @@ config:
     api-base-url: http://localhost:8081
     api-username: admin
     api-password: admin123
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name:unknown}
