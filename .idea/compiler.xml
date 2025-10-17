@@ -9,10 +9,12 @@
         <module name="project" />
         <module name="config-sdk" />
         <module name="demo-app" />
-        <module name="produtor" />
-        <module name="consumidor" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="consumidor" target="17" />
+      <module name="produtor" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
